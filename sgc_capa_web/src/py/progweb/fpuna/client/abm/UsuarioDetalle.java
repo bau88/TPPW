@@ -29,7 +29,7 @@ import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 //import entidades.Rol;
-import py.progweb.fpuna.entidades.*;
+import com.blogspot.tecnologiasjava.model.*;
 
 public class UsuarioDetalle extends Canvas {
 
@@ -134,12 +134,12 @@ public class UsuarioDetalle extends Canvas {
 				final Usuario usuario = new Usuario();
 				//final Rol retorno = null;
 				usuario.setNombre(form.getValueAsString("nombre"));
-				usuario.setNombreusuario(form.getValueAsString("nombreusuario"));
+				usuario.setNombreUsuario(form.getValueAsString("nombreusuario"));
 				usuario.setContrasenha(form.getValueAsString("pwd"));
 								
 				if(form.getValueAsString("codigo") != null){
 					//usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
-					usuario.setIdusuario(Integer.valueOf(form.getValueAsString("codigo")));
+					usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
 				}
 
 				try { 
@@ -166,9 +166,9 @@ public class UsuarioDetalle extends Canvas {
 
         
 		if (usuario != null){
-			codigoText.setDefaultValue(String.valueOf(usuario.getIdusuario()));
+			codigoText.setDefaultValue(String.valueOf(usuario.getIdUsuario()));
 			nombreText.setDefaultValue(usuario.getNombre());
-			nombreusuarioText.setDefaultValue(usuario.getNombreusuario());
+			nombreusuarioText.setDefaultValue(usuario.getNombreUsuario());
 			//pwdText.setDefaultValue(usuario.getContrasenha());
 			//rolItem.setValue(usuario.getRol().getNombre());
 		}

@@ -32,7 +32,7 @@ import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-import py.progweb.fpuna.entidades.Usuario;
+import com.blogspot.tecnologiasjava.model.Usuario;
 
 public class ListaUsuarios extends Canvas {
 	
@@ -68,7 +68,7 @@ public class ListaUsuarios extends Canvas {
         			/* buscar por el campo correspondiente */
         			if(codigoText.getValue() != null){
         				Usuario usuario = new Usuario();
-        				usuario.setIdusuario(Integer.parseInt(codigoText.getValue().toString()));
+        				usuario.setIdUsuario(Integer.parseInt(codigoText.getValue().toString()));
             			listar(usuarioGrid, usuario, "codigo");	
         			}
         			
@@ -104,7 +104,7 @@ public class ListaUsuarios extends Canvas {
         		if ("Enter".equals(event.getKeyName())) {
         			/* buscar por el campo correspondiente */
         			Usuario usuario = new Usuario();
-        			usuario.setNombreusuario(nombreusuarioText.getValue().toString());
+        			usuario.setNombreUsuario(nombreusuarioText.getValue().toString());
         			listar(usuarioGrid, usuario, "nombreusuario");
         		}
 			}
@@ -122,7 +122,7 @@ public class ListaUsuarios extends Canvas {
     			if(nombreText.getValue() != null)
     				usuario.setNombre(nombreText.getValue().toString());
     			if(nombreusuarioText.getValue() != null)
-    				usuario.setNombreusuario(nombreusuarioText.getValue().toString());
+    				usuario.setNombreUsuario(nombreusuarioText.getValue().toString());
     			listar(usuarioGrid, usuario, "nombre");
 			}
 		});
@@ -157,9 +157,9 @@ public class ListaUsuarios extends Canvas {
                 if (col > 2) {
                 	
                 	Usuario usuario = new Usuario();
-                	usuario.setIdusuario(record.getAttributeAsInt("codigo"));
+                	usuario.setIdUsuario(record.getAttributeAsInt("codigo"));
                 	usuario.setNombre(record.getAttribute("nombre"));
-                	usuario.setNombreusuario(record.getAttribute("nombreusuario"));
+                	usuario.setNombreUsuario(record.getAttribute("nombreusuario"));
                 	
                 	if (col == 3) {	/* Editar */
                 		
@@ -250,7 +250,7 @@ public class ListaUsuarios extends Canvas {
 					UsuarioRecord [] r = new UsuarioRecord [result.size()];
 					for(int f = 0; f < result.size(); f++) {
 						if(result.get(0)!=null){
-							r[f] = new UsuarioRecord((int)result.get(f).getIdusuario(), result.get(f).getNombre(), result.get(f).getNombreusuario());
+							r[f] = new UsuarioRecord((int)result.get(f).getIdUsuario(), result.get(f).getNombre(), result.get(f).getNombreUsuario());
 						}
 					}
 					usuarioGrid.setData(r);
