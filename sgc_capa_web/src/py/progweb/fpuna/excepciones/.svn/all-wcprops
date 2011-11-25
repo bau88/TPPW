@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/22/trunk/TPFinal-EJB/ejbModule/excepciones
+END
+StockException.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/8/trunk/TPFinal-EJB/ejbModule/excepciones/StockException.java
+END
+EntidadBaseException.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/22/trunk/TPFinal-EJB/ejbModule/excepciones/EntidadBaseException.java
+END
+FacturaException.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/8/trunk/TPFinal-EJB/ejbModule/excepciones/FacturaException.java
+END
+PagoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/8/trunk/TPFinal-EJB/ejbModule/excepciones/PagoException.java
+END

@@ -1,0 +1,2 @@
+serviceClass: py.progweb.fpuna.client.services.CajaService
+path: 8A30EAE68E65708332555E61B4A76CA2.gwt.rpc

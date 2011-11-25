@@ -24,8 +24,10 @@ import com.smartgwt.client.widgets.form.fields.events.ClickEvent;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 
 //import entidades.Caja;
-//import entidades.Usuario;
-
+import py.progweb.fpuna.entidades.Usuario;
+import py.progweb.fpuna.client.services.UsuarioService;
+import py.progweb.fpuna.client.services.UsuarioServiceAsync;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -108,30 +110,51 @@ public class Sgc_capa_web implements EntryPoint {
         	@Override
             public void onClick(ClickEvent event) {
         		
-        		//final Usuario usuario  = new Usuario();
+        		final Usuario usuario  = new Usuario();
         		
-        		String user = (String)userItem.getValue();
-        		String pwd = (String)pwdItem.getValue();
+        		final String user = (String)userItem.getValue();
+        		final String pwd = (String)pwdItem.getValue();
         		
         		if(user != null && pwd != null) {
-        			//usuario.setNombre(user);
-        			//usuario.setContrasenha(pwd);
+        			usuario.setNombreusuario(user);
+        			usuario.setContrasenha(pwd);
 
-        			//UsuarioServiceAsync service = GWT.create(UsuarioService.class);
+        			UsuarioServiceAsync service = GWT.create(UsuarioService.class);
 
         			try {
-        				winModal.destroy();
-        			    /*  service.listar(usuario, "nombre", new AsyncCallback<List<Usuario>>() {
+        				//winModal.destroy();
+        				//service.buscar_por_nombreusuario(usuario.getNombreusuario(), new AsyncCallback<Usuario>());
+        			      service.listar(usuario, "nombre", new AsyncCallback<List<Usuario>>() {
         					@Override
         					public void onSuccess(List<Usuario> result) {
         						if (result.size() > 0) {
-        							if(result.get(0) != null) {
-        								caja.setIdCaja(result.get(0).getId_caja());
+        							int success=0;
+        							int encontrado=0;
+        							for (Usuario usuario: result){
+    									if (usuario.getNombreusuario().equals(user)){
+    										encontrado=1;
+    										if (usuario.getContrasenha().equals(pwd)){
+    											success=1;
+    										}
+    										else{
+    											com.google.gwt.user.client.Window.alert("Contraseña incorrecta");
+    										}
+    									}
+    								}
+        							if(success== 1) {
+        								//Se pone administrador para que pueda tener acceso a todos los permisos
+        								if (verificarAccesoRol("Administrador")) {
+    										winModal.destroy();
+    									}
+        								/*caja.setIdCaja(result.get(0).getId_caja());
         								if (result.get(0).getRol() != null) {
         									if (verificarAccesoRol(result.get(0).getRol().getNombre())) {
         										winModal.destroy();
         									}
-        								}
+        								}*/
+        							}
+        							if (encontrado==0){
+        								com.google.gwt.user.client.Window.alert("Usuario no encontrado");
         							}
         						} else {
         							com.google.gwt.user.client.Window.alert("Usuario y/o password incorrectos");
@@ -142,7 +165,7 @@ public class Sgc_capa_web implements EntryPoint {
         					public void onFailure(Throwable caught) {
         						com.google.gwt.user.client.Window.alert("Ocurrio un error durante la autenticacion");
         					}
-        				});*/
+        				});
         			} catch (Exception e) {
         				e.printStackTrace();
         			} 
@@ -218,9 +241,12 @@ public class Sgc_capa_web implements EntryPoint {
 			//Se pregunta si el rol es comprador
 			else if (rol.equals("Comprador")) {
 				permisos.put("Compra", true);
+				permisos.put("Producto", true);
+				permisos.put("Proveedor", true);
 			}
 			//Se pregunta si el rol es vendedor
 			else if (rol.equals("Vendedor")) {
+				permisos.put("Cliente", true);
 				permisos.put("Venta", true);
 			}
 			else {

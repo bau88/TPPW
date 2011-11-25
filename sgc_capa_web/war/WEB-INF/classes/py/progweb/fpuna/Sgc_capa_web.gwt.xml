@@ -8,7 +8,6 @@
   <!-- any one of the following lines.                            -->
   <inherits name='com.google.gwt.user.theme.clean.Clean'/>
    <inherits name="com.smartgwt.SmartGwt"/>
-   <inherits name="com.blogspot.tecnologiasjava.EjbModule"/>
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
@@ -21,7 +20,7 @@
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>
-  <!-- <source path='entidades'/>-->
+  <source path='entidades'/>
   <source path='excepciones'/>
   <source path='facades'/>
    <!--  <source path='server'/>   -->

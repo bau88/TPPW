@@ -9,7 +9,7 @@ import py.progweb.fpuna.client.services.UsuarioServiceAsync;
 
 
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
@@ -29,7 +29,7 @@ import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 //import entidades.Rol;
-import com.blogspot.tecnologiasjava.model.*;
+import py.progweb.fpuna.entidades.*;
 
 public class UsuarioDetalle extends Canvas {
 
@@ -124,7 +124,7 @@ public class UsuarioDetalle extends Canvas {
         button.setWidth(80);
         button.setIcon("approve.png");
         button.addClickHandler(new ClickHandler() {
-        	//@Override
+        	@Override
             public void onClick(ClickEvent event) {
         		
         		UsuarioServiceAsync service = GWT.create(UsuarioService.class);
@@ -134,25 +134,25 @@ public class UsuarioDetalle extends Canvas {
 				final Usuario usuario = new Usuario();
 				//final Rol retorno = null;
 				usuario.setNombre(form.getValueAsString("nombre"));
-				usuario.setNombreUsuario(form.getValueAsString("nombreusuario"));
+				usuario.setNombreusuario(form.getValueAsString("nombreusuario"));
 				usuario.setContrasenha(form.getValueAsString("pwd"));
 								
 				if(form.getValueAsString("codigo") != null){
 					//usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
-					usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
+					usuario.setIdusuario(Integer.valueOf(form.getValueAsString("codigo")));
 				}
 
 				try { 
 					//usuario.setRol(retorno);
-					String aux = rol.get(rolItem.getValue());
+					//String aux = rol.get(rolItem.getValue());
 					service.guardar(usuario,  new AsyncCallback<Void>() {
 
-						//@Override
+						@Override
 						public void onFailure(Throwable caught) {
 							Window.alert("Ocurrio un error: " + caught.getClass().getName() + " " + caught.getMessage()) ;
 						}
 
-						//@Override
+						@Override
 						public void onSuccess(Void result) {
 							new ListaUsuarios(mainWindow);
 						}
@@ -166,9 +166,9 @@ public class UsuarioDetalle extends Canvas {
 
         
 		if (usuario != null){
-			codigoText.setDefaultValue(String.valueOf(usuario.getIdUsuario()));
+			codigoText.setDefaultValue(String.valueOf(usuario.getIdusuario()));
 			nombreText.setDefaultValue(usuario.getNombre());
-			nombreusuarioText.setDefaultValue(usuario.getNombreUsuario());
+			nombreusuarioText.setDefaultValue(usuario.getNombreusuario());
 			//pwdText.setDefaultValue(usuario.getContrasenha());
 			//rolItem.setValue(usuario.getRol().getNombre());
 		}
