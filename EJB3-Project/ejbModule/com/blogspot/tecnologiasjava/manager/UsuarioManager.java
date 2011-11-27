@@ -42,46 +42,82 @@ public class UsuarioManager implements UsuarioManagerRemote {
 	
 	@Override 
     public void agregarUsuario(Usuario usuario) {
-    	em.merge(usuario);
+    	
+    	try {			
+    		em.merge(usuario);
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: Objeto no guardado. " + e.getMessage());
+		}
     	//em.persist(usuario); 
     } 
 
 	@Override 
 	public List<Usuario> listar_remoto(Usuario e, String orden)
 			throws EntidadBaseException {
-		List<Usuario> lista = (List<Usuario>)em.createQuery("select r from usuario r").getResultList();
-    	return lista;
+		try {			
+			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
+	    	return lista;
+		} catch (Exception ex) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
+		}
+		
 		
 		
 	}
 	
 	@Override 
 	public Usuario getUsuario(Integer idUsuario) {
-		List<Usuario> lista = listar();
-		for(Usuario usuario : lista) {
-			if (usuario.getPK().equals(idUsuario))
-				return usuario;
+		try {			
+			List<Usuario> lista = listar();
+			for(Usuario usuario : lista) {
+				if (usuario.getPK().equals(idUsuario))
+					return usuario;
+			}
+			
+			return null;
+		} catch (Exception ex) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: En Obtener Usuario. " + ex.getMessage());
 		}
 		
-		return null;
 	}
 	
 	@Override	
 	public Usuario buscar(Integer idUsuario){
-		return getUsuario(idUsuario);
+		try {			
+			return getUsuario(idUsuario);
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: Al buscar usuario. " + e.getMessage());
+		}
+		
 	}
 	
 	@Override
 	public void eliminar(Integer idUsuario){
 		//Baja
-		em.remove(getUsuario(idUsuario));
+		
+		try {			
+			em.remove(getUsuario(idUsuario));
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: Al eliminar usuario. " + e.getMessage());
+		}
 	}
 	
 	@Override
 	public List<Usuario> listar(){
-		List<Usuario> lista = (List<Usuario>)em.createQuery("select r from usuario r").getResultList();
-    	return lista;
+		try {			
+			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
+	    	return lista;
 
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: Al listar. " + e.getMessage());
+		}
+		
 	}
 	
 }

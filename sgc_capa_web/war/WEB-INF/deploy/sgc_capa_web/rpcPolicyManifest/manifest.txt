@@ -1,2 +1,3 @@
 # Module sgc_capa_web
 # RPC service class, partial path of RPC policy file
+py.progweb.fpuna.client.services.UsuarioService, 95E0FC5FB9FF8ABAA1EDE7A0E162B510.gwt.rpc

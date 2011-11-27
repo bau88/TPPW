@@ -29,10 +29,6 @@ public class Usuario extends EntidadBase implements Serializable{
 	    private String nombre; 
 	    
 	    private String contrasenha;
-	    
-	    public Usuario(){
-	    	
-	    }
 		
 	    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    private List<Rol> roles = new ArrayList<Rol>();
@@ -67,6 +63,9 @@ public class Usuario extends EntidadBase implements Serializable{
 		public void setContrasenha(String contrasenha) {
 			this.contrasenha = contrasenha;
 		} 
-
+		public Object getPK(){
+			return this.idUsuario;
+		}
+		
 	   
 }

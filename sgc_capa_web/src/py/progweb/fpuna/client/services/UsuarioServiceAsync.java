@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import py.progweb.fpuna.entidades.Usuario;
+import com.blogspot.tecnologiasjava.model.Usuario;
+//import py.progweb.fpuna.entidades.Usuario;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 
 /**
@@ -16,5 +17,4 @@ public interface UsuarioServiceAsync {
 	void eliminar(List<Usuario> entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void guardar(Usuario entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void listar(Usuario entidad, String orden,AsyncCallback<List<Usuario>> callback) throws EntidadBaseException;
-	
 }

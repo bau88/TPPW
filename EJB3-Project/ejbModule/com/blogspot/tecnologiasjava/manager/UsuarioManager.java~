@@ -9,26 +9,20 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.blogspot.tecnologiasjava.ejb.Usuario;
+import com.blogspot.tecnologiasjava.model.Usuario;
+import com.blogspot.tecnologiasjava.manager.*;
 
-//import com.blogspot.tecnologiasjava.ejb.EAOManagerImpl;
 import com.blogspot.tecnologiasjava.manager.UsuarioManagerRemote;
-/*import entidades.Cliente;
-import entidades.CompraDetalle;
-import entidades.EntidadBase;
-import entidades.ProductoProveedor;
-import entidades.RolUsuario;
-import entidades.Usuario;*/
-import com.blogspot.tecnologiasjava.ejb.EntidadBaseException;
+
+import com.blogspot.tecnologiasjava.model.EntidadBaseException;
 
 /**
  * Session Bean implementation class UsuarioManager
  */
 @Stateless  
 public class UsuarioManager implements UsuarioManagerRemote {
-	/*@EJB CajaFacadeLocal cajafacade;
-	@EJB RolFacadeLocal rolfacade;*/
-	@PersistenceContext(unitName="Curso") 
+	
+    @PersistenceContext(unitName="Curso") 
     private EntityManager em; 
 	
 	@Override
@@ -85,7 +79,7 @@ public class UsuarioManager implements UsuarioManagerRemote {
 	
 	@Override
 	public List<Usuario> listar(){
-		List<Usuario> lista = (List<Usuario>)em.createQuery("select r from usuario r").getResultList();
+		List<Usuario> lista = (List<Usuario>)em.createQuery("select * from usuario r").getResultList();
     	return lista;
 
 	}
