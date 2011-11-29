@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.naming.NamingException;
 
 import py.progweb.fpuna.client.services.CobranzaService;
 //import py.progweb.fpuna.client.GreetingService;
@@ -11,10 +12,11 @@ import py.progweb.fpuna.client.services.CobranzaService;
 //import py.progweb.fpuna.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import py.progweb.fpuna.entidades.Pago;
+import com.blogspot.tecnologiasjava.model.Pago;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
-import py.progweb.fpuna.facades.CobranzaManager;
-//import py.progweb.fpuna.facades.RolFacadeLocal;
+
+import com.blogspot.tecnologiasjava.test.*;
+
 
 
 /**
@@ -23,19 +25,21 @@ import py.progweb.fpuna.facades.CobranzaManager;
 @SuppressWarnings("serial")
 public class CobranzaServiceImpl extends RemoteServiceServlet implements
 		CobranzaService {
-	//@EJB(beanInterface=CobranzaFacadeLocal.class,mappedName="CobranzaFacade/local")
-	CobranzaManager cobranzaFacade= new CobranzaManager();
+	PagoABM administrador;
+	public CobranzaServiceImpl()throws NamingException{
+        administrador= new PagoABM();
+	}	
 	
 	//@Override
 	public Pago buscar(Integer entity) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		return cobranzaFacade.buscar(entity);
+		return administrador.buscar(entity);
 	}
 
 	//@Override
 	public void eliminar(Integer id) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		cobranzaFacade.eliminar(id);
+		administrador.eliminar(id);
 	}
 
 	//@Override
@@ -47,13 +51,13 @@ public class CobranzaServiceImpl extends RemoteServiceServlet implements
 	//@Override
 	public void guardar(Pago entidad) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		cobranzaFacade.guardar(entidad);
+		administrador.guardar(entidad);
 	}
 
 	//@Override
 	public List<Pago> listar(Pago entidad, String orden) throws EntidadBaseException {
 		// TODO Auto-generated method stub
 		//return cobranzaFacade.listar_remoto(entidad, orden);
-		return cobranzaFacade.listar();
+		return administrador.listar();
 	}
 }

@@ -29,7 +29,7 @@ import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 //import entidades.Rol;
-import py.progweb.fpuna.entidades.*;
+import com.blogspot.tecnologiasjava.model.*;
 
 public class ProveedorDetalle extends Canvas {
 

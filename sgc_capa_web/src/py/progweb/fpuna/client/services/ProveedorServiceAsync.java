@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import py.progweb.fpuna.entidades.Proveedor;
+import com.blogspot.tecnologiasjava.model.Proveedor;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 
 /**

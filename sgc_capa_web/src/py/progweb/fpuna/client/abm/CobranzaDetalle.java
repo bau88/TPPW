@@ -21,7 +21,7 @@ import com.smartgwt.client.widgets.form.fields.events.ClickEvent;
 import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-import py.progweb.fpuna.entidades.Pago;
+import com.blogspot.tecnologiasjava.model.Pago;
 
 public class CobranzaDetalle extends Canvas {
 

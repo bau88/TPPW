@@ -6,7 +6,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-2.4.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/ejb-api-3.0.jar"/>
-	<classpathentry kind="con" path="org.jboss.ide.eclipse.as.classpath.core.ejb3.classpathContainer/JBoss 6.0 Runtime Server"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EJB3-Project"/>
+	<classpathentry kind="lib" path="/root/tmp/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
+	<classpathentry kind="lib" path="/root/tmp/javax.persistence.jar/javax.persistence.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

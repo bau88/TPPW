@@ -30,7 +30,7 @@ public class Usuario extends EntidadBase implements Serializable{
 	    
 	    private String contrasenha;
 		
-	    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	   /* @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    private List<Rol> roles = new ArrayList<Rol>();
 	    
 	    public List<Rol> getRoles() {
@@ -38,7 +38,7 @@ public class Usuario extends EntidadBase implements Serializable{
 		}
 		public void setRoles(List<Rol> roles) {
 			this.roles = roles;
-		}
+		}*/
 		public Integer getIdUsuario() {
 			return idUsuario;
 		}

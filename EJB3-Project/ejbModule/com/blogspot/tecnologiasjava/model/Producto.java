@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="producto")
-public class Producto implements Serializable{
+public class Producto extends EntidadBase implements Serializable{
 	private static final long serialVersionUID = 1L; 
 	
 	@Id
@@ -25,32 +25,33 @@ public class Producto implements Serializable{
 	private Integer cantidad;
 	private String descripcion;
 	private Double porcganancia;
+	private Double precio;
 	
-	@ManyToMany
-	private List<Venta> ventas = new ArrayList<Venta>();
+	//@ManyToMany
+	//private List<Venta> ventas = new ArrayList<Venta>();
 	
-	@ManyToMany(mappedBy="productos")
-	private List<Proveedor> proveedores = new ArrayList<Proveedor>();
+	//@ManyToMany(mappedBy="productos")
+	//private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 	
-	@ManyToMany(mappedBy="productos")
-	private List<Compra> compras = new ArrayList<Compra>();
+	//@ManyToMany(mappedBy="productos")
+	//private List<Compra> compras = new ArrayList<Compra>();
 	
 
-	public List<Compra> getCompras() {
+	/*public List<Compra> getCompras() {
 		return compras;
-	}
+	}*/
 
-	public void setCompras(List<Compra> compras) {
+	/*public void setCompras(List<Compra> compras) {
 		this.compras = compras;
-	}
+	}*/
 
-	public List<Proveedor> getProveedores() {
+	/*public List<Proveedor> getProveedores() {
 		return proveedores;
-	}
+	}*/
 
-	public void setProveedores(List<Proveedor> proveedores) {
+	/*public void setProveedores(List<Proveedor> proveedores) {
 		this.proveedores = proveedores;
-	}
+	}*/
 
 	public Integer getId() {
 		return id;
@@ -83,13 +84,24 @@ public class Producto implements Serializable{
 	public void setPorcganancia(Double porcganancia) {
 		this.porcganancia = porcganancia;
 	}
+	
+	public Double getPrecio() {
+		return precio;
+	}
 
-	public List<Venta> getVentas() {
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+    
+	public Object getPK() {
+		return this.getId();
+	}
+	/*public List<Venta> getVentas() {
 		return ventas;
-	}
+	}*/
 
-	public void setVentas(List<Venta> ventas) {
+	/*public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
-	}
+	}*/
     
 }

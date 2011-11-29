@@ -26,18 +26,18 @@ public class Cliente extends EntidadBase implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany(mappedBy="cliente")
-	private List<Venta> ventas = new ArrayList<Venta>();
+	/*@OneToMany(mappedBy="cliente")
+	private List<Venta> ventas = new ArrayList<Venta>();*/
 	
 	private String nombre;
 
-	public List<Venta> getVentas() {
+	/*public List<Venta> getVentas() {
 		return ventas;
-	}
+	}*/
 
-	public void setVentas(List<Venta> ventas) {
+	/*public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
-	}
+	}*/
 
 	public Integer getId() {
 		return id;

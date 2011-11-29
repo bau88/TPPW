@@ -1,2 +1,0 @@
-serviceClass: py.progweb.fpuna.client.services.CobranzaService
-path: 93F106568528A5216CC5EEC30CBA6CF0.gwt.rpc

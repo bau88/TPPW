@@ -32,7 +32,7 @@ import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-import py.progweb.fpuna.entidades.*;
+import com.blogspot.tecnologiasjava.model.*;
 
 public class ListaProveedores extends Canvas {
 	

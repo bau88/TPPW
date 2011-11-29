@@ -13,7 +13,7 @@ import com.blogspot.tecnologiasjava.model.Usuario;
 import com.blogspot.tecnologiasjava.manager.*;
 
 import com.blogspot.tecnologiasjava.manager.UsuarioManagerRemote;
-
+import javax.annotation.security.PermitAll;
 import com.blogspot.tecnologiasjava.model.EntidadBaseException;
 
 /**
@@ -52,7 +52,7 @@ public class UsuarioManager implements UsuarioManagerRemote {
     	//em.persist(usuario); 
     } 
 
-	@Override 
+	@PermitAll
 	public List<Usuario> listar_remoto(Usuario e, String orden)
 			throws EntidadBaseException {
 		try {			
@@ -76,11 +76,12 @@ public class UsuarioManager implements UsuarioManagerRemote {
 					return usuario;
 			}
 			
-			return null;
+			
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Obtener Usuario. " + ex.getMessage());
 		}
+		return null;
 		
 	}
 	
@@ -107,7 +108,7 @@ public class UsuarioManager implements UsuarioManagerRemote {
 		}
 	}
 	
-	@Override
+	@PermitAll
 	public List<Usuario> listar(){
 		try {			
 			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
@@ -117,6 +118,7 @@ public class UsuarioManager implements UsuarioManagerRemote {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al listar. " + e.getMessage());
 		}
+		
 		
 	}
 	

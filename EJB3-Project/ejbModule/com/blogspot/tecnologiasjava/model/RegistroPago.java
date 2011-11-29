@@ -30,16 +30,16 @@ public class RegistroPago implements Serializable{
 	 
 	 private String resultado;
 	 
-	 @OneToOne
-	 private Pago pago;
+	/* @OneToOne
+	 private Pago pago;*/
 		
-	 public Pago getPago() {
+	 /*public Pago getPago() {
 		return pago;
-	}
+	}*/
 
-	public void setPago(Pago pago) {
+	/*public void setPago(Pago pago) {
 		this.pago = pago;
-	}
+	}*/
 
 	public Integer getId() {
 			return id;

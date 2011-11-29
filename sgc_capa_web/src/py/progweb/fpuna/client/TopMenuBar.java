@@ -11,8 +11,8 @@ import com.fpuna.pweb.client.abm.ProveedorLista;
 import com.fpuna.pweb.client.abm.RolLista;
 import com.fpuna.pweb.client.abm.UsuarioLista;
 import com.fpuna.pweb.client.abm.VentaLista;*/
-import py.progweb.fpuna.client.abm.ListaUsuarios;
 
+import py.progweb.fpuna.client.abm.*;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
@@ -38,47 +38,47 @@ public class TopMenuBar extends Composite {
 		subMenuAdm.addItem("Cliente", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Cliente"))
-					//new ListaClientes(mainWindow);
+				if (mainWindow.tienePermiso("Cliente"))
+					new ListaClientes(mainWindow);
 			}
 		});
 		
 		subMenuAdm.addItem("Producto", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Producto"))
-				//	new ListaProductos(mainWindow);
+				if (mainWindow.tienePermiso("Producto"))
+					new ListaProductos(mainWindow);
 			}
 		});
 
 		subMenuAdm.addItem("Proveedor", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Proveedor"))
-				//	new ListaProveedores(mainWindow);
+				if (mainWindow.tienePermiso("Proveedor"))
+					new ListaProveedores(mainWindow);
 			}
 		});
 				
 		subMenuAdm.addItem("Caja", new Command() {
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Caja"))
-					//new ListaCajas(mainWindow);
+				if (mainWindow.tienePermiso("Caja"))
+					new ListaCajas(mainWindow);
 			}
 		});
 
 		subMenuAdm.addItem("Rol", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Rol"))
-				//	new ListaRoles(mainWindow);
+				if (mainWindow.tienePermiso("Rol"))
+					new ListaRoles(mainWindow);
 			}
 		});
 
 		subMenuAdm.addItem("Usuario", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Usuario"))
+				if (mainWindow.tienePermiso("Usuario"))
 					new ListaUsuarios(mainWindow);
 			}
 		});
@@ -88,24 +88,24 @@ public class TopMenuBar extends Composite {
 		menuBar.addItem("Compra", new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Compra"))
-				//	new ListaCompras(mainWindow);
+				if (mainWindow.tienePermiso("Compra"))
+					new ListaCompras(mainWindow);
 			}
 		});
 		
 		menuBar.addItem("Venta",new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Venta"))
-					//new ListaVentas(mainWindow);
+				if (mainWindow.tienePermiso("Venta"))
+					new ListaVentas(mainWindow);
 			}
 		});
 		
 		menuBar.addItem("Cobranza",new Command() {			
 			@Override
 			public void execute() {
-				//if (mainWindow.tienePermiso("Cobranza"))
-				//	new ListaPagos(mainWindow);
+				if (mainWindow.tienePermiso("Cobranza"))
+					new ListaCobranzas(mainWindow);
 			}
 		});
 		

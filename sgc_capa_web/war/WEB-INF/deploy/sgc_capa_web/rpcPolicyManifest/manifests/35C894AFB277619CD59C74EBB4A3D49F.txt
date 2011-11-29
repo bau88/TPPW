@@ -1,0 +1,2 @@
+serviceClass: py.progweb.fpuna.client.services.ProveedorService
+path: 3E631F228A56C87B1267EAE94DE5C363.gwt.rpc

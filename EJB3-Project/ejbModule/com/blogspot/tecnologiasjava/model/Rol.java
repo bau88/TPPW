@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Rol implements Serializable {
+public class Rol extends EntidadBase implements Serializable {
 	 private static final long serialVersionUID = 1L; 
 	 
 	 @Id
@@ -20,19 +20,19 @@ public class Rol implements Serializable {
 	 
 	 private String nombre;
 	 
-	 @ManyToMany(mappedBy="roles")
-	 private List<Usuario> usuarios = new ArrayList<Usuario>();
+	 /*@ManyToMany(mappedBy="roles")
+	 private List<Usuario> usuarios = new ArrayList<Usuario>();*/
 	 
 
 	 public Integer getId() {
 		return id;
 	}
-	public List<Usuario> getUsuarios() {
+	/*public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
-	}
+	}*/
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -42,5 +42,7 @@ public class Rol implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	public Object getPK(){
+		return this.id;
+	}
 }

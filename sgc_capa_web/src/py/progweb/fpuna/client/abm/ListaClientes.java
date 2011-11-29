@@ -32,7 +32,7 @@ import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-import py.progweb.fpuna.entidades.Cliente;
+import com.blogspot.tecnologiasjava.model.Cliente;
 
 public class ListaClientes extends Canvas {
 	
