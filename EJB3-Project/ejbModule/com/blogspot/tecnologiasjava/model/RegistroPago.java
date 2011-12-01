@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="registro_pago")
-public class RegistroPago implements Serializable{
+public class RegistroPago extends EntidadBase implements Serializable{
 	 private static final long serialVersionUID = 1L; 
 	 
 	 @Id
@@ -30,16 +30,16 @@ public class RegistroPago implements Serializable{
 	 
 	 private String resultado;
 	 
-	/* @OneToOne
-	 private Pago pago;*/
+	 @OneToOne
+	 private Pago pago;
 		
-	 /*public Pago getPago() {
+	 public Pago getPago() {
 		return pago;
-	}*/
+	}
 
-	/*public void setPago(Pago pago) {
+	public void setPago(Pago pago) {
 		this.pago = pago;
-	}*/
+	}
 
 	public Integer getId() {
 			return id;
@@ -63,6 +63,10 @@ public class RegistroPago implements Serializable{
 
 		public void setResultado(String resultado) {
 			this.resultado = resultado;
+		}
+		
+		public Object getPK(){
+			return this.id;
 		}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.blogspot.tecnologiasjava.model.Producto;
+import com.blogspot.tecnologiasjava.model.Proveedor;
 import com.blogspot.tecnologiasjava.manager.*;
 
 import com.blogspot.tecnologiasjava.manager.ProductoManagerRemote;
@@ -56,8 +57,17 @@ public class ProductoManager implements ProductoManagerRemote {
 	public List<Producto> listar_remoto(Producto e, String orden)
 			throws EntidadBaseException {
 		try {			
-			List<Producto> lista = (List<Producto>)em.createQuery("select u from Producto u").getResultList();
-	    	return lista;
+			List<Producto> lista_prod = (List<Producto>)em.createQuery("select u from Producto u").getResultList();
+			List<Producto> lista=new ArrayList<Producto>();
+			for (Producto prov_i:lista_prod){
+				prov_i.setFacturas(null);
+				prov_i.setCompras(null);
+				prov_i.setFacturadetalles(null);
+				prov_i.setCompradetalles(null);
+				prov_i.setProveedores(null);
+				lista.add(prov_i);
+			}
+			return lista;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +82,13 @@ public class ProductoManager implements ProductoManagerRemote {
 		try {			
 			List<Producto> lista = listar();
 			for(Producto producto : lista) {
-				if (producto.getPK().equals(idProducto))
-					return producto;
+				if (producto.getPK().equals(idProducto)){
+					producto.setCompras(null);
+					producto.setFacturadetalles(null);
+					producto.setCompradetalles(null);
+				    producto.setFacturas(null);
+				    producto.setProveedores(null);
+					return producto;}
 			}
 			
 			
@@ -87,8 +102,14 @@ public class ProductoManager implements ProductoManagerRemote {
 	
 	@Override	
 	public Producto buscar(Integer idProducto){
-		try {			
-			return getProducto(idProducto);
+		try {		
+			Producto producto=getProducto(idProducto);
+			producto.setCompras(null);
+			producto.setFacturadetalles(null);
+			producto.setCompradetalles(null);
+		    producto.setFacturas(null);
+		    producto.setProveedores(null);
+			return producto;
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al buscar Producto. " + e.getMessage());
@@ -111,8 +132,17 @@ public class ProductoManager implements ProductoManagerRemote {
 	@PermitAll
 	public List<Producto> listar(){
 		try {			
-			List<Producto> lista = (List<Producto>)em.createQuery("select u from Producto u").getResultList();
-	    	return lista;
+			List<Producto> lista_prod = (List<Producto>)em.createQuery("select u from Producto u").getResultList();
+			List<Producto> lista=new ArrayList<Producto>();
+			for (Producto prov_i:lista_prod){
+				prov_i.setFacturas(null);
+				prov_i.setFacturadetalles(null);
+				prov_i.setCompradetalles(null);
+				prov_i.setCompras(null);
+				prov_i.setProveedores(null);
+				lista.add(prov_i);
+			}
+			return lista;
 
 		} catch (Exception e) {
 			// TODO: handle exception

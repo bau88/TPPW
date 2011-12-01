@@ -1,2 +1,0 @@
-serviceClass: py.progweb.fpuna.client.services.CompraDetalleService
-path: BA6DAAC4603298D44555918A4915A93F.gwt.rpc

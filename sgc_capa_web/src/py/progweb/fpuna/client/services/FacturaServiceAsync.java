@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import py.progweb.fpuna.entidades.Factura;
+import com.blogspot.tecnologiasjava.model.Factura;
+import com.blogspot.tecnologiasjava.model.FacturaDetalle;
+
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 
 /**
@@ -16,4 +18,6 @@ public interface FacturaServiceAsync {
 	void eliminar(List<Factura> entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void guardar(Factura entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void listar(Factura entidad, String orden,AsyncCallback<List<Factura>> callback) throws EntidadBaseException;
+    void facturar(Factura entidad, AsyncCallback<Integer> callback ) throws EntidadBaseException;
+    void guardarFacturaConDetalles(Factura entidad, AsyncCallback<Integer> callback)throws EntidadBaseException;
 }

@@ -31,14 +31,14 @@ import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
-
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.entidades.*;
 
 public class ListaCajas extends Canvas {
 	
 	public ListaCajas(final Sgc_capa_web mainWindow) {
 
-		String PATH_IMG = "/images/";
+		String PATH_IMG = "/sgc_capa_web/images/";
 		VLayout layout = new VLayout(10);
         layout.setBackgroundColor("#006633");
         final ListGrid cajaGrid = new ListGrid(); 
@@ -68,7 +68,7 @@ public class ListaCajas extends Canvas {
         			/* buscar por el campo correspondiente */
         			if(codigoText.getValue() != null){
         				Caja caja = new Caja();
-        				caja.setIdcaja(Integer.parseInt(codigoText.getValue().toString()));
+        				caja.setId(Integer.parseInt(codigoText.getValue().toString()));
             			listar(cajaGrid, caja, "codigo");	
         			}
         			
@@ -144,7 +144,7 @@ public class ListaCajas extends Canvas {
                 if (col > 1) {
                 	
                 	Caja caja = new Caja();               	
-                	caja.setIdcaja(record.getAttributeAsInt("codigo"));
+                	caja.setId(record.getAttributeAsInt("codigo"));
                 	caja.setDescripcion(record.getAttribute("nombre"));
                 	
                 	
@@ -239,7 +239,7 @@ public class ListaCajas extends Canvas {
 					CajaRecord [] r = new CajaRecord [result.size()];
 					for(int f = 0; f < result.size(); f++) {
 						if(result.get(0)!=null){
-							r[f] = new CajaRecord((int)result.get(f).getIdcaja(), result.get(f).getDescripcion());
+							r[f] = new CajaRecord((int)result.get(f).getId(), result.get(f).getDescripcion());
 						}
 					}
 					cajaGrid.setData(r);

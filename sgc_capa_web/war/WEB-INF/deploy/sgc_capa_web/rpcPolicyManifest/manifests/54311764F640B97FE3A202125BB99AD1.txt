@@ -1,0 +1,2 @@
+serviceClass: py.progweb.fpuna.client.services.UsuarioService
+path: 0048C709F10A58A541E8F7668EA2B04D.gwt.rpc

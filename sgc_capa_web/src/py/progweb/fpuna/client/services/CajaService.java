@@ -5,7 +5,8 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-import py.progweb.fpuna.entidades.Caja;
+import com.blogspot.tecnologiasjava.model.Caja;
+//import py.progweb.fpuna.entidades.*;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 
 /**

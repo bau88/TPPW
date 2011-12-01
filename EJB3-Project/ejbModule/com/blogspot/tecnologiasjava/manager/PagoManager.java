@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.blogspot.tecnologiasjava.model.Pago;
+import com.blogspot.tecnologiasjava.model.Producto;
 import com.blogspot.tecnologiasjava.manager.*;
 
 import com.blogspot.tecnologiasjava.manager.PagoManagerRemote;
@@ -56,8 +57,9 @@ public class PagoManager implements PagoManagerRemote {
 	public List<Pago> listar_remoto(Pago e, String orden)
 			throws EntidadBaseException {
 		try {			
-			List<Pago> lista = (List<Pago>)em.createQuery("select u from Pago u").getResultList();
-	    	return lista;
+			List<Pago> lista_pago = (List<Pago>)em.createQuery("select u from Pago u").getResultList();
+			
+			return lista_pago;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +74,8 @@ public class PagoManager implements PagoManagerRemote {
 		try {			
 			List<Pago> lista = listar();
 			for(Pago pago : lista) {
-				if (pago.getPK().equals(idPago))
-					return pago;
+				if (pago.getPK().equals(idPago)){
+					return pago;}
 			}
 			
 			

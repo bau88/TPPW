@@ -17,5 +17,6 @@ public interface RolManagerRemote{
 	public Rol buscar(Integer idRol);
 	public void eliminar(Integer idRol);
 	public List<Rol> listar();
+	public Rol obtenerRolPorNombre(String nombreRol);
 	public List<Rol> listar_remoto(Rol e, String orden)	throws EntidadBaseException; 
 }

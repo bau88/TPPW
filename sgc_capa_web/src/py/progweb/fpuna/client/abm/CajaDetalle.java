@@ -19,6 +19,7 @@ import com.smartgwt.client.widgets.form.fields.events.ClickEvent;
 import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.entidades.*;
 
 public class CajaDetalle extends Canvas {
@@ -76,7 +77,7 @@ public class CajaDetalle extends Canvas {
 				caja.setDescripcion(form.getValueAsString("nombre"));
                 
 				if(form.getValueAsString("codigo") != null){
-					caja.setIdcaja(Integer.valueOf(form.getValueAsString("codigo")));
+					caja.setId(Integer.valueOf(form.getValueAsString("codigo")));
 				}
 
 				try {
@@ -99,7 +100,7 @@ public class CajaDetalle extends Canvas {
 		});      
         
 		if (caja != null){
-			codigoText.setDefaultValue(String.valueOf(caja.getIdcaja()));
+			codigoText.setDefaultValue(String.valueOf(caja.getId()));
 			nombreText.setDefaultValue(caja.getDescripcion());
 		}
     

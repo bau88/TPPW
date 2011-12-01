@@ -1,2 +1,0 @@
-serviceClass: py.progweb.fpuna.client.services.FacturaService
-path: D9EFE1B00268E5F6EAD59DDB48DDADB7.gwt.rpc

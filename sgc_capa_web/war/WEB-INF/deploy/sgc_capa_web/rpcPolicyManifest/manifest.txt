@@ -1,13 +1,12 @@
 # Module sgc_capa_web
 # RPC service class, partial path of RPC policy file
-py.progweb.fpuna.client.services.FacturaDetalleService, 95B9C34B3ACA7E57F349BA81922604D7.gwt.rpc
-py.progweb.fpuna.client.services.ProveedorService, 3E631F228A56C87B1267EAE94DE5C363.gwt.rpc
-py.progweb.fpuna.client.services.CompraService, 75592D053D7E58C4E00B54FA9EDF9173.gwt.rpc
-py.progweb.fpuna.client.services.RolService, F5C27E2B4FF1BBE8073D6366C71AAADB.gwt.rpc
-py.progweb.fpuna.client.services.ProductoService, 21230C50152DD5FD0BEBF27C74204BFD.gwt.rpc
-py.progweb.fpuna.client.services.CobranzaService, 4DBC32233CE08A3B8B80A1DC9D407921.gwt.rpc
-py.progweb.fpuna.client.services.CompraDetalleService, BA6DAAC4603298D44555918A4915A93F.gwt.rpc
-py.progweb.fpuna.client.services.ClienteService, BD0C9C1254A2252331545A3D32880641.gwt.rpc
-py.progweb.fpuna.client.services.CajaService, 8A30EAE68E65708332555E61B4A76CA2.gwt.rpc
-py.progweb.fpuna.client.services.UsuarioService, 3BE8E1C83BA5C66F93BB9616047CA745.gwt.rpc
-py.progweb.fpuna.client.services.FacturaService, D9EFE1B00268E5F6EAD59DDB48DDADB7.gwt.rpc
+py.progweb.fpuna.client.services.ClienteService, 1FC56BC8BCB1DA59A952FDE0BA12D850.gwt.rpc
+py.progweb.fpuna.client.services.ProveedorService, 8DE05E38718CDECB4F27F4677F97C410.gwt.rpc
+py.progweb.fpuna.client.services.CompraDetalleService, 7727E1D8EE5A004D1861BAB55AC99EEF.gwt.rpc
+py.progweb.fpuna.client.services.UsuarioService, 0048C709F10A58A541E8F7668EA2B04D.gwt.rpc
+py.progweb.fpuna.client.services.FacturaService, 83A94B26DD61323332D673A88757DA51.gwt.rpc
+py.progweb.fpuna.client.services.CajaService, B611DADCFBFFF9A0B16D29104F867DEF.gwt.rpc
+py.progweb.fpuna.client.services.CompraService, 91A62C1CF2B183F55E9526A19F47CE6C.gwt.rpc
+py.progweb.fpuna.client.services.CobranzaService, 7961E99CD5968231DD71D3CDC06DEBE0.gwt.rpc
+py.progweb.fpuna.client.services.ProductoService, 39614010DC3194A27B18F5F313E21AF9.gwt.rpc
+py.progweb.fpuna.client.services.RolService, D0D40515DB3D3D768D401FF7B77D886C.gwt.rpc

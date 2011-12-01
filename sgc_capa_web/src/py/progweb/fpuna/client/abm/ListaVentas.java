@@ -31,14 +31,14 @@ import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
-
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.entidades.*;
 
 public class ListaVentas extends Canvas {
 	
 	public ListaVentas(final Sgc_capa_web mainWindow) {
 
-		String PATH_IMG = "/images/";
+		String PATH_IMG = "/sgc_capa_web/images/";
 		VLayout layout = new VLayout(10);
         layout.setBackgroundColor("#006633");
         final ListGrid facturaGrid = new ListGrid(); 
@@ -134,7 +134,7 @@ public class ListaVentas extends Canvas {
                 	factura.setFecha(record.getAttributeAsDate("fecha"));
                 	factura.setNumero(Integer.parseInt(record.getAttribute("numero")));
                 	factura.setPendiente(record.getAttribute("pendiente"));
-                	factura.setSaldo(Integer.parseInt(record.getAttribute("saldo")));
+                	factura.setSaldo(Double.parseDouble(record.getAttribute("saldo")));
                 	
                 	if (col == 5) {	/* Editar */
                 		
@@ -252,7 +252,7 @@ class FacturaRecord extends ListGridRecord {
 	public FacturaRecord() {
 	}
 
-	public FacturaRecord(int codigo, Date fecha, Integer numero, String pendiente, Integer saldo) {
+	public FacturaRecord(int codigo, Date fecha, Integer numero, String pendiente, Double saldo) {
 		setCodigo(codigo);
 		setFecha(fecha);
 		setNumero(numero);
@@ -274,7 +274,7 @@ class FacturaRecord extends ListGridRecord {
 		setAttribute("numero",numero);
 	}
 	
-	public void setSaldo(Integer saldo) {
+	public void setSaldo(Double saldo) {
 		setAttribute("saldo",saldo);
 	}
     

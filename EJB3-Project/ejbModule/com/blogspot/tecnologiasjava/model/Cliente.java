@@ -28,14 +28,28 @@ public class Cliente extends EntidadBase implements Serializable{
 	
 	/*@OneToMany(mappedBy="cliente")
 	private List<Venta> ventas = new ArrayList<Venta>();*/
+	@OneToMany(mappedBy="cliente")
+	private List<Factura> facturas = new ArrayList<Factura>();
+	
 	
 	private String nombre;
+	
+	
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+
 
 	/*public List<Venta> getVentas() {
 		return ventas;
-	}*/
+	}
 
-	/*public void setVentas(List<Venta> ventas) {
+	public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
 	}*/
 
@@ -53,5 +67,9 @@ public class Cliente extends EntidadBase implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public Object getPK(){
+		return this.id;
 	}
 }

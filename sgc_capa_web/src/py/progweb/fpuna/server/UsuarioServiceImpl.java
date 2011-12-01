@@ -16,11 +16,13 @@ import py.progweb.fpuna.client.services.UsuarioService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import com.blogspot.tecnologiasjava.model.Usuario;
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 //import py.progweb.fpuna.facades.UsuarioManager;
 //import com.blogspot.tecnologiasjava.manager.*;
 
 import com.blogspot.tecnologiasjava.test.AdministradorABM;
+import com.blogspot.tecnologiasjava.test.*;
 //import py.progweb.fpuna.facades.*;
 //import py.progweb.fpuna.entidades.*;
 /**
@@ -30,8 +32,10 @@ import com.blogspot.tecnologiasjava.test.AdministradorABM;
 public class UsuarioServiceImpl extends RemoteServiceServlet implements
 		UsuarioService {
 	AdministradorABM administrador;
+	RolABM administradorrol;
 	public UsuarioServiceImpl()throws NamingException{
         administrador= new AdministradorABM();
+        administradorrol=new RolABM();
 	}	
 	//@EJB(beanInterface=UsuarioManagerRemote.class,mappedName="UsuarioManager/remote")
 	//UsuarioManagerRemote usuarioFacade;
@@ -59,6 +63,14 @@ public class UsuarioServiceImpl extends RemoteServiceServlet implements
 		// TODO Auto-generated method stub
 		administrador.guardar(entidad);
 	}
+        
+        @Override
+	public void guardarUsuarioRol(Usuario entidad, String rol) throws EntidadBaseException {
+		// TODO Auto-generated method stub
+       
+		
+		administrador.guardarUsuarioRol(entidad, rol);
+	}
 
 	@Override
 	public List<Usuario> listar(Usuario entidad, String orden) throws EntidadBaseException {
@@ -66,6 +78,14 @@ public class UsuarioServiceImpl extends RemoteServiceServlet implements
 		//return usuarioFacade.listar_remoto(entidad, orden);
 		
 		return administrador.listar();
+		
+	}
+	
+	@Override
+	public List<Rol> obtenerRolesUsuario(Integer entity) throws EntidadBaseException {
+		// TODO Auto-generated method stub
+		//return usuarioFacade.listar_remoto(entidad, orden);		
+		return administrador.obtenerRolesUsuario(entity);
 		
 	}
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_cierrecaja" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA" class="java.util.Date"/>
+	<field name="FACTURA" class="java.lang.String"/>
+	<field name="CAJA" class="java.lang.Integer"/>
+	<field name="MONTO" class="java.lang.Double"/>
+	<columnHeader>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="98" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="271" y="30" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[CAJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="29" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="29" width="138" height="20"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[MONTO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="60" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="0" width="77" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA CIERRE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="271" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{CAJA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FACTURA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{MONTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

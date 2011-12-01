@@ -39,14 +39,7 @@
     <servlet-name>facturaServlet</servlet-name>
     <servlet-class>py.progweb.fpuna.server.FacturaServiceImpl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>facturadetalleServlet</servlet-name>
-    <servlet-class>py.progweb.fpuna.server.FacturaDetalleServiceImpl</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>compradetalleServlet</servlet-name>
-    <servlet-class>py.progweb.fpuna.server.CompraDetalleServiceImpl</servlet-class>
-  </servlet>
+ 
   <servlet>
     <servlet-name>cobranzaServlet</servlet-name>
     <servlet-class>py.progweb.fpuna.server.CobranzaServiceImpl</servlet-class>
@@ -84,14 +77,7 @@
     <servlet-name>facturaServlet</servlet-name>
     <url-pattern>/sgc_capa_web/facturaService</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>facturadetalleServlet</servlet-name>
-    <url-pattern>/sgc_capa_web/facturadetalleService</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>compradetalleServlet</servlet-name>
-    <url-pattern>/sgc_capa_web/compradetalleService</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>cobranzaServlet</servlet-name>
     <url-pattern>/sgc_capa_web/cobranzaService</url-pattern>

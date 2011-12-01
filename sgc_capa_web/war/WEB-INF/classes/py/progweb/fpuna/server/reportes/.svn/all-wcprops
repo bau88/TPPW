@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/74/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes
+END
+Reporte_factura.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/Reporte_factura.jrxml
+END
+Reporte_cierrecaja.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/Reporte_cierrecaja.jrxml
+END
+ServletReportes.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/74/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/ServletReportes.java
+END
+Reporte_factura.jasper
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/Reporte_factura.jasper
+END
+Reporte_cierrecaja.jasper
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/Reporte_cierrecaja.jasper
+END
+JRDataSourceFactura.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/JRDataSourceFactura.java
+END
+JRDataSourcePago.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/67/trunk/TPFinal-GWT/src/com/fpuna/pweb/server/reportes/JRDataSourcePago.java
+END

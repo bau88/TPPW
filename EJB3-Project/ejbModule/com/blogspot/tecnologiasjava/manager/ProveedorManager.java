@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.blogspot.tecnologiasjava.model.Proveedor;
+import com.blogspot.tecnologiasjava.model.Rol;
 import com.blogspot.tecnologiasjava.manager.*;
 
 import com.blogspot.tecnologiasjava.manager.ProveedorManagerRemote;
@@ -56,8 +57,14 @@ public class ProveedorManager implements ProveedorManagerRemote {
 	public List<Proveedor> listar_remoto(Proveedor e, String orden)
 			throws EntidadBaseException {
 		try {			
-			List<Proveedor> lista = (List<Proveedor>)em.createQuery("select u from Proveedor u").getResultList();
-	    	return lista;
+			List<Proveedor> lista_prov = (List<Proveedor>)em.createQuery("select u from Proveedor u").getResultList();
+			List<Proveedor> lista=new ArrayList<Proveedor>();
+			for (Proveedor prov_i:lista_prov){
+				prov_i.setCompras(null);
+				prov_i.setProductos(null);
+				lista.add(prov_i);
+			}
+			return lista;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +79,10 @@ public class ProveedorManager implements ProveedorManagerRemote {
 		try {			
 			List<Proveedor> lista = listar();
 			for(Proveedor proveedor : lista) {
-				if (proveedor.getPK().equals(idProveedor))
-					return proveedor;
+				if (proveedor.getPK().equals(idProveedor)){
+					proveedor.setCompras(null);
+				    proveedor.setProductos(null);
+					return proveedor;}
 			}
 			
 			
@@ -87,8 +96,11 @@ public class ProveedorManager implements ProveedorManagerRemote {
 	
 	@Override	
 	public Proveedor buscar(Integer idProveedor){
-		try {			
-			return getProveedor(idProveedor);
+		try {		
+			Proveedor proveedor=getProveedor(idProveedor);
+			proveedor.setCompras(null);
+			proveedor.setProductos(null);
+			return proveedor;
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al buscar Proveedor. " + e.getMessage());
@@ -111,8 +123,14 @@ public class ProveedorManager implements ProveedorManagerRemote {
 	@PermitAll
 	public List<Proveedor> listar(){
 		try {			
-			List<Proveedor> lista = (List<Proveedor>)em.createQuery("select u from Proveedor u").getResultList();
-	    	return lista;
+			List<Proveedor> lista_prov = (List<Proveedor>)em.createQuery("select u from Proveedor u").getResultList();
+			List<Proveedor> lista=new ArrayList<Proveedor>();
+			for (Proveedor prov_i:lista_prov){
+				prov_i.setCompras(null);
+				prov_i.setProductos(null);
+				lista.add(prov_i);
+			}
+			return lista;
 
 		} catch (Exception e) {
 			// TODO: handle exception

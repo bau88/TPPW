@@ -1,2 +1,0 @@
-serviceClass: py.progweb.fpuna.client.services.RolService
-path: F5C27E2B4FF1BBE8073D6366C71AAADB.gwt.rpc

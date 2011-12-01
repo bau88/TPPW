@@ -8,7 +8,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import com.blogspot.tecnologiasjava.model.*;
 import com.blogspot.tecnologiasjava.model.Usuario;
 import com.blogspot.tecnologiasjava.manager.*;
 
@@ -57,7 +57,14 @@ public class UsuarioManager implements UsuarioManagerRemote {
 			throws EntidadBaseException {
 		try {			
 			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
-	    	return lista;
+			List<Usuario> listado_nuevo = new ArrayList<Usuario>();
+		 	for(Usuario usuario: lista){				
+			 	if (usuario.getRoles() != null)
+				 	usuario.setRoles(null);
+			 
+			 	listado_nuevo.add(usuario);
+		 	}
+	    		return listado_nuevo;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +79,9 @@ public class UsuarioManager implements UsuarioManagerRemote {
 		try {			
 			List<Usuario> lista = listar();
 			for(Usuario usuario : lista) {
-				if (usuario.getPK().equals(idUsuario))
-					return usuario;
+				if (usuario.getPK().equals(idUsuario)){
+					usuario.setRoles(null);
+					return usuario;}
 			}
 			
 			
@@ -87,8 +95,10 @@ public class UsuarioManager implements UsuarioManagerRemote {
 	
 	@Override	
 	public Usuario buscar(Integer idUsuario){
-		try {			
-			return getUsuario(idUsuario);
+		try {		
+			Usuario usuario=getUsuario(idUsuario);
+			usuario.setRoles(null);
+			return usuario;
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al buscar usuario. " + e.getMessage());
@@ -112,7 +122,15 @@ public class UsuarioManager implements UsuarioManagerRemote {
 	public List<Usuario> listar(){
 		try {			
 			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
-	    	return lista;
+			//Se setea a null setRoles
+			List<Usuario> listado_nuevo = new ArrayList<Usuario>();
+		 	for(Usuario usuario: lista){				
+			 	if (usuario.getRoles() != null)
+				 	usuario.setRoles(null);
+			 
+			 	listado_nuevo.add(usuario);
+		 	}
+	    		return listado_nuevo;
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -120,6 +138,27 @@ public class UsuarioManager implements UsuarioManagerRemote {
 		}
 		
 		
+	}
+	@Override
+	public List<Rol> obtenerRolesUsuario(Integer idUsuario){
+		try {		
+			List<Usuario> lista = (List<Usuario>)em.createQuery("select u from Usuario u").getResultList();
+			List<Rol> roles=null;
+			for(Usuario usuario : lista) {
+				if (usuario.getPK().equals(idUsuario))
+					//usuario.setRoles(null);
+					roles=usuario.getRoles();
+			}
+			List<Rol> rolesnuevo= new ArrayList<Rol>();
+			for (Rol rol: roles){
+				rol.setUsuarios(null);
+				rolesnuevo.add(rol);
+			}
+			return rolesnuevo;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new EntidadBaseException("ERROR: Al buscar roles de usuario. " + e.getMessage());
+		}
 	}
 	
 }

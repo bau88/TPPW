@@ -27,31 +27,61 @@ public class Producto extends EntidadBase implements Serializable{
 	private Double porcganancia;
 	private Double precio;
 	
-	//@ManyToMany
-	//private List<Venta> ventas = new ArrayList<Venta>();
+	@ManyToMany
+	private List<Factura> facturas = new ArrayList<Factura>();
 	
-	//@ManyToMany(mappedBy="productos")
-	//private List<Proveedor> proveedores = new ArrayList<Proveedor>();
+	@ManyToMany(mappedBy="productos")
+	private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 	
-	//@ManyToMany(mappedBy="productos")
-	//private List<Compra> compras = new ArrayList<Compra>();
+	@ManyToMany(mappedBy="productos")
+	private List<Compra> compras = new ArrayList<Compra>();
+	
+	 @ManyToMany(mappedBy="productos")
+	 private List<CompraDetalle> compradetalles = new ArrayList<CompraDetalle>();
+	
+	 @ManyToMany(mappedBy="productos")
+	 private List<FacturaDetalle> facturadetalles = new ArrayList<FacturaDetalle>();
 	
 
-	/*public List<Compra> getCompras() {
+	public List<FacturaDetalle> getFacturadetalles() {
+		return facturadetalles;
+	}
+
+	public void setFacturadetalles(List<FacturaDetalle> facturadetalles) {
+		this.facturadetalles = facturadetalles;
+	}
+
+	public List<CompraDetalle> getCompradetalles() {
+		return compradetalles;
+	}
+
+	public void setCompradetalles(List<CompraDetalle> compradetalles) {
+		this.compradetalles = compradetalles;
+	}
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public List<Compra> getCompras() {
 		return compras;
-	}*/
+	}
 
-	/*public void setCompras(List<Compra> compras) {
+	public void setCompras(List<Compra> compras) {
 		this.compras = compras;
-	}*/
+	}
 
-	/*public List<Proveedor> getProveedores() {
+	public List<Proveedor> getProveedores() {
 		return proveedores;
-	}*/
+	}
 
-	/*public void setProveedores(List<Proveedor> proveedores) {
+	public void setProveedores(List<Proveedor> proveedores) {
 		this.proveedores = proveedores;
-	}*/
+	}
 
 	public Integer getId() {
 		return id;
@@ -84,6 +114,7 @@ public class Producto extends EntidadBase implements Serializable{
 	public void setPorcganancia(Double porcganancia) {
 		this.porcganancia = porcganancia;
 	}
+
 	
 	public Double getPrecio() {
 		return precio;
@@ -92,16 +123,10 @@ public class Producto extends EntidadBase implements Serializable{
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-    
-	public Object getPK() {
-		return this.getId();
+	
+	public Object getPK(){
+		return this.id;
 	}
-	/*public List<Venta> getVentas() {
-		return ventas;
-	}*/
 
-	/*public void setVentas(List<Venta> ventas) {
-		this.ventas = ventas;
-	}*/
     
 }

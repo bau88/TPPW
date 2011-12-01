@@ -32,19 +32,19 @@ public class Pago extends EntidadBase implements Serializable{
 	 
 	 private String cerrado;
 	 
-	/* @OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	 private RegistroPago registroPago;*/
+	 @OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	 private RegistroPago registroPago;
 	 
-	/* @ManyToOne
-	 private Factura factura;*/
+	 @ManyToOne
+	 private Factura factura;
 
-	/*public Factura getFactura() {
+	public Factura getFactura() {
 		return factura;
 	}
 
 	public void setFactura(Factura factura) {
 		this.factura = factura;
-	}*/
+	}
 
 	public Integer getId() {
 		return id;
@@ -78,14 +78,16 @@ public class Pago extends EntidadBase implements Serializable{
 		this.cerrado = cerrado;
 	}
 
-	/*public RegistroPago getRegistroPago() {
+	public RegistroPago getRegistroPago() {
 		return registroPago;
 	}
 
 	public void setRegistroPago(RegistroPago registroPago) {
 		this.registroPago = registroPago;
-	}*/
+	}
+	
 	public Object getPK(){
 		return this.id;
 	}
+
 }

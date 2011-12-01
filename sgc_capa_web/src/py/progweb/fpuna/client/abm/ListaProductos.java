@@ -39,7 +39,7 @@ public class ListaProductos extends Canvas {
 	
 	public ListaProductos(final Sgc_capa_web mainWindow) {
 
-		String PATH_IMG = "/images/";
+		String PATH_IMG = "/sgc_capa_web/images/";
 		VLayout layout = new VLayout(10);
         layout.setBackgroundColor("#006633");
         final ListGrid productoGrid = new ListGrid(); 

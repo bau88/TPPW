@@ -56,8 +56,13 @@ public class RolManager implements RolManagerRemote {
 	public List<Rol> listar_remoto(Rol e, String orden)
 			throws EntidadBaseException {
 		try {			
-			List<Rol> lista = (List<Rol>)em.createQuery("select u from Rol u").getResultList();
-	    	return lista;
+			List<Rol> lista_rol = (List<Rol>)em.createQuery("select u from Rol u").getResultList();
+			List<Rol> lista=new ArrayList<Rol>();
+			for (Rol rol_i:lista_rol){
+				rol_i.setUsuarios(null);
+				lista.add(rol_i);
+			}
+			return lista;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +77,9 @@ public class RolManager implements RolManagerRemote {
 		try {			
 			List<Rol> lista = listar();
 			for(Rol rol : lista) {
-				if (rol.getPK().equals(idRol))
-					return rol;
+				if (rol.getPK().equals(idRol)){
+					rol.setUsuarios(null);
+					return rol;}
 			}
 			
 			
@@ -87,8 +93,10 @@ public class RolManager implements RolManagerRemote {
 	
 	@Override	
 	public Rol buscar(Integer idRol){
-		try {			
-			return getRol(idRol);
+		try {	
+			Rol rol=getRol(idRol);
+			rol.setUsuarios(null);
+			return rol;
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al buscar Rol. " + e.getMessage());
@@ -111,8 +119,13 @@ public class RolManager implements RolManagerRemote {
 	@PermitAll
 	public List<Rol> listar(){
 		try {			
-			List<Rol> lista = (List<Rol>)em.createQuery("select u from Rol u").getResultList();
-	    	return lista;
+			List<Rol> lista_rol = (List<Rol>)em.createQuery("select u from Rol u").getResultList();
+			List<Rol> lista=new ArrayList<Rol>();
+			for (Rol rol_i:lista_rol){
+				rol_i.setUsuarios(null);
+				lista.add(rol_i);
+			}
+			return lista;
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -121,5 +134,16 @@ public class RolManager implements RolManagerRemote {
 		
 		
 	}
+	public Rol obtenerRolPorNombre(String nombreRol){
+		  try{
+	    		Rol rol = (Rol)em.createQuery("select r from Rol r where r.nombre like :nombreRol ")
+	    		.setParameter("nombreRol", nombreRol).getSingleResult();
+	    		rol.setUsuarios(null);
+	    		return rol;
+	      }catch(Exception e){
+	    		System.out.print("Rol no encontrado:" + e );
+	    }
+	    return null;
+	  }
 	
 }

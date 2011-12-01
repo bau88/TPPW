@@ -18,4 +18,5 @@ public interface RolService extends RemoteService{
 	void eliminar(List<Rol> entidad) throws EntidadBaseException;
 	void guardar(Rol entidad) throws EntidadBaseException;
 	List<Rol> listar(Rol entidad, String orden) throws EntidadBaseException;
+	Rol obtenerRolPorNombre(String nombre) throws EntidadBaseException;
 }

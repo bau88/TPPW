@@ -29,8 +29,8 @@ import com.smartgwt.client.widgets.grid.events.CellClickEvent;
 import com.smartgwt.client.widgets.grid.events.CellClickHandler;
 import com.smartgwt.client.widgets.layout.VLayout;
 
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.entidades.*;
-
 public class Compra_Detalle extends Canvas {
 
 	public Compra_Detalle(final Sgc_capa_web mainWindow) {
@@ -163,9 +163,11 @@ public class Compra_Detalle extends Canvas {
 		                if (col > 3) {
 		                	CompraDetalle compradetalle = new CompraDetalle();                	   	               	
 		                	compradetalle.setIdCompDet(record.getAttributeAsInt("codigo"));
+		                	//compradetalle.set
+		                
 		                	compradetalle.setId_producto(record.getAttributeAsInt("producto"));
 		                	compradetalle.setCantidad(Integer.parseInt(record.getAttribute("cantidad")));
-		                	compradetalle.setPrecioCompra(Integer.parseInt(record.getAttribute("preciocompra")));
+		                	compradetalle.setPrecioCompra(Double.parseDouble(record.getAttribute("preciocompra")));
 		                	                	
 		                	if (col == 4) {	/* Editar */
 		                		//Aca hay que llamar para editar el detalle, o sea a CargaProductoFactura

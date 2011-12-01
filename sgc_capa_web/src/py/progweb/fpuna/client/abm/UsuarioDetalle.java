@@ -1,10 +1,10 @@
 package py.progweb.fpuna.client.abm;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-//import com.fpuna.pweb.client.RolService;
-//import com.fpuna.pweb.client.RolServiceAsync;
+
 import py.progweb.fpuna.client.Sgc_capa_web;
 import py.progweb.fpuna.client.services.UsuarioService;
-
+import py.progweb.fpuna.client.services.RolService;
+import py.progweb.fpuna.client.services.RolServiceAsync;
 import py.progweb.fpuna.client.services.UsuarioServiceAsync;
 
 
@@ -90,18 +90,18 @@ public class UsuarioDetalle extends Canvas {
 
         /* Para cargar el comboBox de Roles */
         
-       // RolServiceAsync service = GWT.create(RolService.class);	
+        RolServiceAsync service = GWT.create(RolService.class);	
 
-		/*try {
-			Rol rol_listar = new Rol();
-			String orden = "idRol";
-			service.listar(rol_listar, orden, new AsyncCallback<List<Rol>>() {
+		try {
+			Rol rol_usuario = new Rol();
+			String orden = "id";
+			service.listar(rol_usuario, orden, new AsyncCallback<List<Rol>>() {
 				@Override
 				public void onSuccess(List<Rol> result) {
 					String [] r = new String [result.size()];
 					for(int f = 0; f < result.size(); f++) {
 						if(result.get(0)!=null){
-							rol.put(result.get(f).getNombre(), new String ("" + result.get(f).getIdRol()));
+							rol.put(result.get(f).getNombre(), new String ("" + result.get(f).getId()));
 							r[f] = new String(result.get(f).getNombre());
 						}
 					}
@@ -117,42 +117,42 @@ public class UsuarioDetalle extends Canvas {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		*/
+		
       
         ButtonItem button = new ButtonItem("save", "Guardar");
         button.setStartRow(false);
         button.setWidth(80);
         button.setIcon("approve.png");
         button.addClickHandler(new ClickHandler() {
-        	//@Override
+        	@Override
             public void onClick(ClickEvent event) {
         		
-        		UsuarioServiceAsync service = GWT.create(UsuarioService.class);
-        		ServiceDefTarget serviceDef = (ServiceDefTarget) service;
-			serviceDef.setServiceEntryPoint(GWT.getModuleBaseURL()+ "usuarioService");
-
+        			UsuarioServiceAsync service = GWT.create(UsuarioService.class);
+        			ServiceDefTarget serviceDef = (ServiceDefTarget) service;
+				serviceDef.setServiceEntryPoint(GWT.getModuleBaseURL()+ "usuarioService");
+			    	
 				final Usuario usuario = new Usuario();
-				//final Rol retorno = null;
+				
 				usuario.setNombre(form.getValueAsString("nombre"));
 				usuario.setNombreUsuario(form.getValueAsString("nombreusuario"));
 				usuario.setContrasenha(form.getValueAsString("pwd"));
+				String rol_a_asignar=form.getValueAsString("rol");
 								
 				if(form.getValueAsString("codigo") != null){
-					//usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
+					
 					usuario.setIdUsuario(Integer.valueOf(form.getValueAsString("codigo")));
 				}
 
 				try { 
-					//usuario.setRol(retorno);
-					String aux = rol.get(rolItem.getValue());
-					service.guardar(usuario,  new AsyncCallback<Void>() {
+					
+					service.guardarUsuarioRol(usuario, rol_a_asignar,  new AsyncCallback<Void>() {
 
-						//@Override
+						@Override
 						public void onFailure(Throwable caught) {
 							Window.alert("Ocurrio un error: " + caught.getClass().getName() + " " + caught.getMessage()) ;
 						}
 
-						//@Override
+						@Override
 						public void onSuccess(Void result) {
 							new ListaUsuarios(mainWindow);
 						}
@@ -169,8 +169,38 @@ public class UsuarioDetalle extends Canvas {
 			codigoText.setDefaultValue(String.valueOf(usuario.getIdUsuario()));
 			nombreText.setDefaultValue(usuario.getNombre());
 			nombreusuarioText.setDefaultValue(usuario.getNombreUsuario());
-			//pwdText.setDefaultValue(usuario.getContrasenha());
-			//rolItem.setValue(usuario.getRol().getNombre());
+			pwdText.setDefaultValue(usuario.getContrasenha());
+			UsuarioServiceAsync service2 = GWT.create(UsuarioService.class);
+			try { 
+				
+				service2.obtenerRolesUsuario(usuario.getIdUsuario(),  new AsyncCallback<List<Rol>>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Ocurrio un error: " + caught.getClass().getName() + " " + caught.getMessage()) ;
+					}
+
+					@Override
+					public void onSuccess(List<Rol> result) {
+						rolItem.setDefaultValue(result.get(0).getNombre());
+						rolItem.disable();
+					}
+				});
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			//Carga los roles de usuario en el combo box de Roles
+			/*String [] listaroles = new String [usuario.getRoles().size()];
+			int i=0;
+			for (Rol rolusuario: usuario.getRoles()){
+				listaroles[i]=rolusuario.getNombre();
+				i++;
+			}
+			rolItem.setValueMap(listaroles);
+			//Deja deshabilitado el rol para su edicion
+			rolItem.disable();*/
+			
 		}
 		
 				

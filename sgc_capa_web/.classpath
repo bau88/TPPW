@@ -9,6 +9,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/EJB3-Project"/>
 	<classpathentry kind="lib" path="/root/tmp/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
-	<classpathentry kind="lib" path="/root/tmp/javax.persistence.jar/javax.persistence.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

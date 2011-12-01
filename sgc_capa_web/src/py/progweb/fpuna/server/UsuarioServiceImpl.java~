@@ -14,12 +14,14 @@ import py.progweb.fpuna.client.services.UsuarioService;
 
 //import py.progweb.fpuna.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import org.apache.log4j.Logger;
+
 import com.blogspot.tecnologiasjava.model.Usuario;
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
 //import py.progweb.fpuna.facades.UsuarioManager;
 //import com.blogspot.tecnologiasjava.manager.*;
-import com.blogspot.tecnologiasjava.manager.*;
+
+import com.blogspot.tecnologiasjava.test.AdministradorABM;
 //import py.progweb.fpuna.facades.*;
 //import py.progweb.fpuna.entidades.*;
 /**
@@ -28,18 +30,11 @@ import com.blogspot.tecnologiasjava.manager.*;
 @SuppressWarnings("serial")
 public class UsuarioServiceImpl extends RemoteServiceServlet implements
 		UsuarioService {
-	Logger logger;
-	InitialContext ctx;
-	UsuarioManagerRemote usuarioFacade;
-	public UsuarioServiceImpl(){
-                logger = Logger.getLogger(this.getClass();
-		ctx = new InitialContext();		
-		try { 
-		//usuarioFacade = null; 		         
-		usuarioFacade = (UsuarioManagerRemote) ctx.lookup("UsuarioManager/remote");  
-		} catch (NamingException e) {           
-				e.printStackTrace();       
-		}   
+	AdministradorABM administrador;
+	RolABM administradorrol;
+	public UsuarioServiceImpl()throws NamingException{
+        administrador= new AdministradorABM();
+	administradorrol=new RolABM();
 	}	
 	//@EJB(beanInterface=UsuarioManagerRemote.class,mappedName="UsuarioManager/remote")
 	//UsuarioManagerRemote usuarioFacade;
@@ -47,13 +42,13 @@ public class UsuarioServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public Usuario buscar(Integer entity) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		return usuarioFacade.buscar(entity);
+		return administrador.buscar(entity);
 	}
 
 	@Override
 	public void eliminar(Integer id) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		usuarioFacade.eliminar(id);
+		administrador.eliminar(id);
 	}
 
 	@Override
@@ -65,17 +60,22 @@ public class UsuarioServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public void guardar(Usuario entidad) throws EntidadBaseException {
 		// TODO Auto-generated method stub
-		usuarioFacade.guardar(entidad);
+		administrador.guardar(entidad);
+	}
+        
+        @Override
+	public void guardarUsuarioRol(Usuario entidad, String rol) throws EntidadBaseException {
+		// TODO Auto-generated method stub
+		Rol rol_a_asignar = administradorrol.buscarRolPorNombre(rol);
+		administrador.guardar(entidad);
 	}
 
 	@Override
 	public List<Usuario> listar(Usuario entidad, String orden) throws EntidadBaseException {
 		// TODO Auto-generated method stub
 		//return usuarioFacade.listar_remoto(entidad, orden);
-		if (usuarioFacade.listar()==null){
-			System.out.println("Es nulo");
-		}
-		return usuarioFacade.listar();
+		
+		return administrador.listar();
 		
 	}
 }

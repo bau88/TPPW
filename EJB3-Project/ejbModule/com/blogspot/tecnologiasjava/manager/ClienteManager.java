@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.blogspot.tecnologiasjava.model.Cliente;
+import com.blogspot.tecnologiasjava.model.Proveedor;
 import com.blogspot.tecnologiasjava.manager.*;
 
 //import com.blogspot.tecnologiasjava.manager.ClienteManagerRemote;
@@ -56,8 +57,14 @@ public class ClienteManager implements ClienteManagerRemote {
 	public List<Cliente> listar_remoto(Cliente e, String orden)
 			throws EntidadBaseException {
 		try {			
-			List<Cliente> lista = (List<Cliente>)em.createQuery("select u from Cliente u").getResultList();
-	    	return lista;
+			List<Cliente> lista_cliente = (List<Cliente>)em.createQuery("select u from Cliente u").getResultList();
+			List<Cliente> lista=new ArrayList<Cliente>();
+			for (Cliente prov_i:lista_cliente){
+				prov_i.setFacturas(null);
+				
+				lista.add(prov_i);
+			}
+			return lista;
 		} catch (Exception ex) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: En Listado. " + ex.getMessage());
@@ -72,8 +79,9 @@ public class ClienteManager implements ClienteManagerRemote {
 		try {			
 			List<Cliente> lista = listar();
 			for(Cliente cliente : lista) {
-				if (cliente.getPK().equals(idCliente))
-					return cliente;
+				if (cliente.getPK().equals(idCliente)){
+					cliente.setFacturas(null);
+					return cliente;}
 			}
 			
 			
@@ -87,8 +95,10 @@ public class ClienteManager implements ClienteManagerRemote {
 	
 	@Override	
 	public Cliente buscar(Integer idCliente){
-		try {			
-			return getCliente(idCliente);
+		try {	
+			Cliente cliente=getCliente(idCliente);
+			cliente.setFacturas(null);
+			return cliente;
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new EntidadBaseException("ERROR: Al buscar Cliente. " + e.getMessage());
@@ -111,8 +121,14 @@ public class ClienteManager implements ClienteManagerRemote {
 	@PermitAll
 	public List<Cliente> listar(){
 		try {			
-			List<Cliente> lista = (List<Cliente>)em.createQuery("select u from Cliente u").getResultList();
-	    	return lista;
+			List<Cliente> lista_cliente = (List<Cliente>)em.createQuery("select u from Cliente u").getResultList();
+			List<Cliente> lista=new ArrayList<Cliente>();
+			for (Cliente prov_i:lista_cliente){
+				prov_i.setFacturas(null);
+				
+				lista.add(prov_i);
+			}
+			return lista;
 
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -60,4 +60,11 @@ RolService {
 		//return rolFacade.listar_remoto(entidad, orden);
 		return administrador.listar();
 	}
+	
+	@Override
+	public Rol obtenerRolPorNombre(String nombrerol) throws EntidadBaseException {
+		// TODO Auto-generated method stub
+		//return rolFacade.listar_remoto(entidad, orden);
+		return administrador.obtenerRolPorNombre(nombrerol);
+	}
 }

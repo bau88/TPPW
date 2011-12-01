@@ -1,0 +1,2 @@
+serviceClass: py.progweb.fpuna.client.services.ProductoService
+path: 39614010DC3194A27B18F5F313E21AF9.gwt.rpc

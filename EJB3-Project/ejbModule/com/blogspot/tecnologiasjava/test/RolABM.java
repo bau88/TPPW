@@ -65,5 +65,8 @@ public class RolABM {
 		return todos_roles;
 
 	}
+	public Rol obtenerRolPorNombre(String nombrerol){
+		return rolFacade.obtenerRolPorNombre(nombrerol);
+	}
 
 }

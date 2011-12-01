@@ -23,14 +23,14 @@ public class Usuario extends EntidadBase implements Serializable{
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	    private Integer idUsuario; 
 	    
-	    //Los demas atributos seran persistidas mediante reflexion
+	   //Los demas atributos seran persistidas mediante reflexion
 	    private String nombreUsuario; 
 	    
 	    private String nombre; 
 	    
 	    private String contrasenha;
 		
-	   /* @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    private List<Rol> roles = new ArrayList<Rol>();
 	    
 	    public List<Rol> getRoles() {
@@ -38,7 +38,7 @@ public class Usuario extends EntidadBase implements Serializable{
 		}
 		public void setRoles(List<Rol> roles) {
 			this.roles = roles;
-		}*/
+		}
 		public Integer getIdUsuario() {
 			return idUsuario;
 		}
@@ -66,6 +66,6 @@ public class Usuario extends EntidadBase implements Serializable{
 		public Object getPK(){
 			return this.idUsuario;
 		}
-		
+
 	   
 }

@@ -16,4 +16,5 @@ public interface RolServiceAsync {
 	void eliminar(List<Rol> entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void guardar(Rol entidad,AsyncCallback<Void> callback) throws EntidadBaseException;
 	void listar(Rol entidad, String orden,AsyncCallback<List<Rol>> callback) throws EntidadBaseException;
+    void obtenerRolPorNombre(String nombre, AsyncCallback<Rol> callbak) throws EntidadBaseException;
 }

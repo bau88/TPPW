@@ -5,8 +5,9 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-import py.progweb.fpuna.entidades.Factura;
+import com.blogspot.tecnologiasjava.model.*;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
+
 
 /**
  * The client side stub for the RPC service.
@@ -18,4 +19,6 @@ public interface FacturaService extends RemoteService {
 	void eliminar(List<Factura> entidad) throws EntidadBaseException;
 	void guardar(Factura entidad) throws EntidadBaseException;
 	List<Factura> listar(Factura entidad, String orden) throws EntidadBaseException;
+	Integer facturar(Factura entidad) throws EntidadBaseException;
+	Integer guardarFacturaConDetalles(Factura entidad)throws EntidadBaseException;
 }

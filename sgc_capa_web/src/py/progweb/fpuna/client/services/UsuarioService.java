@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-
+import com.blogspot.tecnologiasjava.model.*;
 import com.blogspot.tecnologiasjava.model.Usuario;
 //import py.progweb.fpuna.entidades.Usuario;
 import py.progweb.fpuna.excepciones.EntidadBaseException;
@@ -18,5 +18,8 @@ public interface UsuarioService extends RemoteService {
 	void eliminar(Integer id) throws EntidadBaseException;
 	void eliminar(List<Usuario> entidad) throws EntidadBaseException;
 	void guardar(Usuario entidad) throws EntidadBaseException;
+	void guardarUsuarioRol(Usuario entidad, String rol) throws EntidadBaseException;
 	List<Usuario> listar(Usuario entidad, String orden) throws EntidadBaseException;
+	List<Rol> obtenerRolesUsuario(Integer entity)throws EntidadBaseException;
+	
 }
